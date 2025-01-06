@@ -21,14 +21,14 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1 
+          aws-region: us-east-1
 
       - name: Log in to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Pull Docker image
         run: |
-          docker pull 982081066879.dkr.ecr.us-east-1.amazonaws.com/mi-app-docker:latest
+          docker pull --platform linux/amd64 982081066879.dkr.ecr.us-east-1.amazonaws.com/mi-app-docker:latest
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
